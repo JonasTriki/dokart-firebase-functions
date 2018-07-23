@@ -14,7 +14,7 @@ const transporter = (service, email, password) => (
 
 exports.sendFeedback = functions.https.onRequest((req, res) => {
     const opts = {
-        to: process.env.FROM,
+        to: process.env.TO_EMAIL,
         subject: "Dokart Feedback",
         html: (req.body.from ? "<p><strong>From: </strong>" + req.body.from + "</p>" : "") + 
               "<p><strong>Type: </strong>" + req.body.type + "</p>" +
@@ -27,6 +27,6 @@ exports.sendFeedback = functions.https.onRequest((req, res) => {
             res.status(500).send("Internal server error!");
             return;
         }
-        res.status(200).send("Mail sent: " + info);
+        res.status(200).send("Mail sent!");
     });
 });
