@@ -1,0 +1,4 @@
+SERVICE=gmail
+EMAIL=from@email.com
+PASSWORD=123456
+TO_EMAIL=to@email.com
