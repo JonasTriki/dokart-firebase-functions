@@ -5,7 +5,7 @@ import Toilet from '../../../models/Toilet';
 
 type City = 'oslo' | 'bergen' | 'stavanger'
 
-interface CityToilets {
+export interface CityToilets {
     city: City;
     toilets: Toilet[];
 }
