@@ -1,4 +1,3 @@
-import * as functions from 'firebase-functions'
 import { fetchAllToilets, CityToilets } from './citites';
 import admin from '../../admin'
 
@@ -44,7 +43,7 @@ async function syncCityToilets({ city, toilets }: CityToilets) {
     }
 }
 
-async function syncToilets(request: functions.https.Request, response: functions.Response) {
+async function syncToilets() {
     console.log("Synchronizing toilets…")
 
     const allToilets = await fetchAllToilets()

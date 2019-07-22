@@ -1,9 +1,10 @@
 import { fetchToilets as fetchOsloToilets } from './oslo'
 import { fetchToilets as fetchBergenToilets } from './bergen'
 import { fetchToilets as fetchStavangerToilets } from './stavanger'
+import { fetchToilets as fetchTrondheimToilets } from './trondheim'
 import Toilet from '../../../models/Toilet';
 
-type City = 'oslo' | 'bergen' | 'stavanger'
+type City = 'oslo' | 'bergen' | 'stavanger' | 'trondheim'
 
 export interface CityToilets {
     city: City;
@@ -23,6 +24,10 @@ export async function fetchAllToilets(): Promise<CityToilets[]> {
         {
             city: "stavanger",
             toilets: await fetchStavangerToilets()
+        },
+        {
+            city: "trondheim",
+            toilets: fetchTrondheimToilets()
         },
     ]
 }

@@ -10,8 +10,8 @@ interface DifiToilets<T extends DifiToilet> {
     entries: T[]
 }
 
-export function parseOpeningHour(time: string): OpeningHour {
-    time = time.toLocaleLowerCase()
+export function parseOpeningHour(timeStr: string): OpeningHour {
+    const time = timeStr.toLocaleLowerCase()
     if (time === "null" || time === "stengt") {
         return { from: "closed", to: "closed" }
     } else if (time === "all" || time === "døgnåpent") {
@@ -33,7 +33,7 @@ export async function fetchToilets<T extends DifiToilet>(endpoint: string): Prom
         return response
             .data
             .entries
-            .filter(toilet => toilet.latitude != "" && toilet.longitude != "")
+            .filter(toilet => toilet.latitude !== "" && toilet.longitude !== "")
     } catch (err) {
         console.log(`Error fetching toilets from ${endpoint}: `, err)
         return []
