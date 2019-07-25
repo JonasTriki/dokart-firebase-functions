@@ -4,6 +4,7 @@ export interface OpeningHour {
 }
 
 export default interface Toilet {
+    id?: string;
     latitude: number;
     longitude: number;
     price: number;
@@ -17,4 +18,5 @@ export default interface Toilet {
     accessible: boolean;
     babycare: boolean;
     pissoir: boolean;
+    city: string;
 }

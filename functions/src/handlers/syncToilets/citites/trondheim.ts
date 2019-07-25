@@ -75,5 +75,5 @@ export function fetchToilets(): Toilet[] {
             babycare: true,
             pissoir: true,
         },
-    ]
+    ].map(toilet => ({ ...toilet, city: "trondheim" }))
 }

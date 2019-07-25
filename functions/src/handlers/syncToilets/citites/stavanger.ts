@@ -34,5 +34,6 @@ export async function fetchToilets(): Promise<Toilet[]> {
         accessible: toilet.rullestol === "1",
         babycare: toilet.stellerom === "1",
         pissoir: false, // TODO: Verify that no toilets in Stavanger has pissoirs
+        city: "stavanger",
     }))
 }

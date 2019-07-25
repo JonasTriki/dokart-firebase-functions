@@ -51,5 +51,6 @@ export async function fetchToilets(): Promise<Toilet[]> {
         accessible: toilet.attributes.Toalettype === 1,
         babycare: false,
         pissoir: false,
+        city: "oslo",
     }))
 }

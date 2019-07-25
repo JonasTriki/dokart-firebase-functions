@@ -1,5 +1,5 @@
 import * as functions from 'firebase-functions';
-import { sendFeedbackHandler, syncToiletsHandler } from './handlers'
+import { sendFeedbackHandler, syncToiletsHandler, apiHandler } from './handlers'
 
 export const sendFeedback = functions.region("europe-west2").https.onRequest(sendFeedbackHandler)
 
@@ -12,3 +12,6 @@ export const syncToiletsScheduled = functions.region("europe-west2").pubsub
     .schedule("0 3 * * *") // Every day at 3 am
     .timeZone("Europe/Oslo")
     .onRun(async (context) => { await syncToiletsHandler() });
+
+// Expose Apollo GraphQl server
+export const api = functions.region("europe-west2").https.onRequest(apiHandler)

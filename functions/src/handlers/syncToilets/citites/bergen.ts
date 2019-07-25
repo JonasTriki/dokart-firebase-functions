@@ -39,5 +39,6 @@ export async function fetchToilets(): Promise<Toilet[]> {
         accessible: toilet.rullestol === "1",
         babycare: toilet.stellerom === "1",
         pissoir: toilet.pissoir_only === "1",
+        city: 'bergen',
     }))
 }
