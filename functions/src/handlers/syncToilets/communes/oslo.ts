@@ -1,5 +1,6 @@
 import axios from 'axios'
 import Toilet from '../../../models/Toilet'
+import { openAllDay } from '../../../utils/time';
 
 interface OsloToilet {
     attributes: {
@@ -36,7 +37,6 @@ async function fetchOsloToilets(): Promise<OsloToilet[]> {
 
 export async function fetchToilets(): Promise<Toilet[]> {
     const toilets = await fetchOsloToilets()
-    const openingHours = { from: "all", to: "all" }
     return toilets.map(toilet => ({
         latitude: toilet.geometry.y,
         longitude: toilet.geometry.x,
@@ -44,13 +44,13 @@ export async function fetchToilets(): Promise<Toilet[]> {
         placement: toilet.attributes.Navn,
         address: toilet.attributes.Bydel || toilet.attributes.Adresse,
         openingHours: {
-            weekday: openingHours,
-            saturday: openingHours,
-            sunday: openingHours,
+            weekday: openAllDay,
+            saturday: openAllDay,
+            sunday: openAllDay,
         },
         accessible: toilet.attributes.Toalettype === 1,
         babycare: false,
         pissoir: false,
-        city: "oslo",
+        commune: "Oslo",
     }))
 }

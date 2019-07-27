@@ -1,11 +1,5 @@
 import Toilet from "../../../models/Toilet";
-
-const openingHour = { from: 'all', to: 'all' }
-const openingHours = {
-    weekday: openingHour,
-    saturday: openingHour,
-    sunday: openingHour,
-}
+import { openAllWeek } from '../../../utils/time'
 
 export function fetchToilets(): Toilet[] {
     return [
@@ -15,7 +9,7 @@ export function fetchToilets(): Toilet[] {
             price: 10,
             placement: "7-Eleven Elgeseter",
             address: "Elgesetergate 2",
-            openingHours,
+            openingHours: openAllWeek,
             accessible: true,
             babycare: true,
             pissoir: true,
@@ -26,7 +20,7 @@ export function fetchToilets(): Toilet[] {
             price: 10,
             placement: "Bakke Bru",
             address: "Verftsgata 1",
-            openingHours,
+            openingHours: openAllWeek,
             accessible: true,
             babycare: true,
             pissoir: true,
@@ -37,7 +31,7 @@ export function fetchToilets(): Toilet[] {
             price: 10,
             placement: "Bispegata",
             address: "Bispegata 6",
-            openingHours,
+            openingHours: openAllWeek,
             accessible: true,
             babycare: true,
             pissoir: true,
@@ -48,7 +42,7 @@ export function fetchToilets(): Toilet[] {
             price: 10,
             placement: "Ilaparken",
             address: "Ilevollen 32B",
-            openingHours,
+            openingHours: openAllWeek,
             accessible: true,
             babycare: true,
             pissoir: true,
@@ -59,7 +53,7 @@ export function fetchToilets(): Toilet[] {
             price: 10,
             placement: "Fjordgata",
             address: "Fjordgata 54",
-            openingHours,
+            openingHours: openAllWeek,
             accessible: true,
             babycare: true,
             pissoir: true,
@@ -70,10 +64,10 @@ export function fetchToilets(): Toilet[] {
             price: 10,
             placement: "Trondheim Torg",
             address: "Munkegata 19",
-            openingHours,
+            openingHours: openAllWeek,
             accessible: true,
             babycare: true,
             pissoir: true,
         },
-    ].map(toilet => ({ ...toilet, city: "trondheim" }))
+    ].map(toilet => ({ ...toilet, commune: "Trondheim" }))
 }

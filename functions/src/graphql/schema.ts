@@ -1,4 +1,4 @@
-import { gql } from 'apollo-server-cloud-functions'
+import { gql } from 'apollo-server-express'
 
 const typeDefs = gql`
     type OpeningHour {
@@ -23,17 +23,11 @@ const typeDefs = gql`
         accessible: Boolean!
         babycare: Boolean!
         pissoir: Boolean!
-        city: String!
-    }
-
-    type City {
-        id: ID!
-        name: String!
-        toilets: [Toilet]
+        commune: String!
     }
 
     type Query {
-        cities: [City]
+        toilets: [Toilet]
     }
 `
 

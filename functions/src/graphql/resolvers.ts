@@ -1,36 +1,25 @@
-import { IResolvers } from 'apollo-server-cloud-functions'
+import { IResolvers } from 'apollo-server-express'
 import admin from '../admin'
-import City from '../models/City'
 import Toilet from '../models/Toilet'
 import { QuerySnapshot } from '@google-cloud/firestore';
 
-const snapshotToData = (snapshot: QuerySnapshot) => snapshot.docs.map(doc => doc.data())
+// const snapshotToData = (snapshot: QuerySnapshot) => snapshot.docs.map(doc => doc.data())
 const snapshotToDataWithId = (snapshot: QuerySnapshot) => snapshot.docs.map(doc => ({
     ...doc.data(),
     id: doc.id,
 }))
 
-const citiesCol = admin.firestore().collection("cities")
+const toiletsCol = admin.firestore().collection("toilets")
 
 const resolvers: IResolvers = {
     Query: {
-        async cities() {
-            const citiesSnapshot = await citiesCol.get()
-            const toilets = await Promise.all(citiesSnapshot.docs.map(city =>
-                citiesCol
-                    .doc(city.id)
-                    .collection("toilets")
-                    .get()
-            ))
-            const cities = citiesSnapshot.docs.map((city, i) => ({
-                id: city.id,
-                name: city.id,
-                toilets: snapshotToDataWithId(toilets[i]) as Toilet[],
-            }))
-            return cities as City[]
-        }
+        async toilets() {
+            const toilets = await toiletsCol
+                .get()
+            return snapshotToDataWithId(toilets) as Toilet[]
+        },
     },
-    City: {
+    /*City: {
         async toilets(city: City) {
             const toilets = await citiesCol
                 .doc(city.id)
@@ -51,7 +40,7 @@ const resolvers: IResolvers = {
                 name: toilet.city
             } as City
         }
-    }
+    }*/
 }
 
 export default resolvers

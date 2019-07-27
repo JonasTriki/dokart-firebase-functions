@@ -1,4 +1,5 @@
-import { fetchToilets as fetchDifiToilets, parseOpeningHour } from "./difiCity";
+import { fetchToilets as fetchDifiToilets } from "../../../utils/difiCity";
+import { parseOpeningHour } from '../../../utils/time'
 import Toilet from "../../../models/Toilet";
 
 interface StavangerToilet {
@@ -31,9 +32,9 @@ export async function fetchToilets(): Promise<Toilet[]> {
             saturday: parseOpeningHour(toilet.aapningstider_loerdag),
             sunday: parseOpeningHour(toilet.aapningstider_soendag),
         },
-        accessible: toilet.rullestol === "1",
-        babycare: toilet.stellerom === "1",
+        accessible: toilet.rullestol === "1" || toilet.rullestol === "JA",
+        babycare: toilet.stellerom === "1" || toilet.stellerom === "JA",
         pissoir: false, // TODO: Verify that no toilets in Stavanger has pissoirs
-        city: "stavanger",
+        commune: "Stavanger",
     }))
 }

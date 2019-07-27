@@ -1,7 +1,4 @@
-export interface OpeningHour {
-    from: string;
-    to: string;
-}
+import OpeningHour from './OpeningHour'
 
 export default interface Toilet {
     id?: string;
@@ -18,5 +15,5 @@ export default interface Toilet {
     accessible: boolean;
     babycare: boolean;
     pissoir: boolean;
-    city: string;
+    commune: string;
 }

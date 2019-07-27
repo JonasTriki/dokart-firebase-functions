@@ -1,4 +1,5 @@
-import { fetchToilets as fetchDifiToilets, parseOpeningHour } from "./difiCity";
+import { fetchToilets as fetchDifiToilets } from "../../../utils/difiCity";
+import { parseOpeningHour } from '../../../utils/time'
 import Toilet from '../../../models/Toilet'
 
 interface BergenToilet {
@@ -39,6 +40,6 @@ export async function fetchToilets(): Promise<Toilet[]> {
         accessible: toilet.rullestol === "1",
         babycare: toilet.stellerom === "1",
         pissoir: toilet.pissoir_only === "1",
-        city: 'bergen',
+        commune: 'Bergen',
     }))
 }

@@ -1,19 +1,5 @@
-import { ApolloServer } from "apollo-server-cloud-functions"
-import resolvers from "../../graphql/resolvers"
-import typeDefs from "../../graphql/schema"
+import gqlServer from '../../graphql/server';
 
-function api() {
-    return new ApolloServer({
-        typeDefs,
-        resolvers,
-        playground: true,
-        introspection: true,
-    }).createHandler({
-        cors: {
-            origin: '*',
-            credentials: true,
-        },
-    })
-}
+const server = gqlServer();
 
-export default api
+export default server
