@@ -1,4 +1,5 @@
 import OpeningHour from './OpeningHour'
+import Season from './Season'
 
 export default interface Toilet {
     id?: string;
@@ -16,4 +17,5 @@ export default interface Toilet {
     babycare: boolean;
     pissoir: boolean;
     commune: string;
+    season?: Season;
 }
