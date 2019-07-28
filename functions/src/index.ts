@@ -9,7 +9,7 @@ export const syncToilets = functions.region("europe-west2").https.onRequest(asyn
     res.send({ status: "ok" })
 })
 export const syncToiletsScheduled = functions.region("europe-west2").pubsub
-    .schedule("0 3 * * *") // Every day at 3 am
+    .schedule("0 3 * * 0") // Every Sunday at 3 am
     .timeZone("Europe/Oslo")
     .onRun(async (context) => { await syncToiletsHandler() });
 
