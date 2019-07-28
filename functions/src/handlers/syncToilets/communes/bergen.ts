@@ -29,9 +29,9 @@ export async function fetchToilets(): Promise<Toilet[]> {
     return toilets.map(toilet => ({
         latitude: parseFloat(toilet.latitude),
         longitude: parseFloat(toilet.longitude),
-        price: parseInt(toilet.pris),
-        placement: toilet.plassering,
-        address: toilet.adresse,
+        price: toilet.pris !== "NULL" ? parseInt(toilet.pris) : 0,
+        placement: toilet.plassering.replace(" , ", ",").trim(),
+        address: toilet.adresse.trim(),
         openingHours: {
             weekday: parseOpeningHour(toilet.tid_hverdag),
             saturday: parseOpeningHour(toilet.tid_lordag),

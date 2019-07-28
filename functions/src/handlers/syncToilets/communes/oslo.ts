@@ -42,7 +42,7 @@ export async function fetchToilets(): Promise<Toilet[]> {
         longitude: toilet.geometry.x,
         price: -1,
         placement: toilet.attributes.Navn,
-        address: toilet.attributes.Bydel || toilet.attributes.Adresse,
+        address: toilet.attributes.Bydel || toilet.attributes.Adresse || toilet.attributes.Navn,
         openingHours: {
             weekday: openAllDay,
             saturday: openAllDay,

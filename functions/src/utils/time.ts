@@ -16,8 +16,8 @@ export function parseOpeningHour(timeStr: string): OpeningHour {
         return openAllDay
     } else {
         const splitTime = time.replace(/ - /g, "-").split("-")
-        const from = splitTime[0]
-        const to = splitTime[1]
+        const from = splitTime[0].replace("\.", ":")
+        const to = splitTime[1].replace("\.", ":")
         if (from === to && (from === "00:00" || from === "24:00")) {
             return openAllDay
         }
