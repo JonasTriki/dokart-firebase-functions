@@ -1,5 +1,6 @@
 import Toilet from "../../../models/Toilet";
-import { openAllWeek } from '../../../utils/time'
+import { openAllWeek, openAllWeekUntilNight } from '../../../utils/time'
+import Season from "../../../models/Season";
 
 export function fetchToilets(): Toilet[] {
     return [
@@ -9,7 +10,7 @@ export function fetchToilets(): Toilet[] {
             price: 10,
             placement: "Ørsta rutebilstasjon",
             address: "Ørsta rutebilstasjon",
-            openingHours: openAllWeek,
+            openingHours: openAllWeekUntilNight,
             accessible: false,
             babycare: true,
             pissoir: false,
@@ -20,7 +21,7 @@ export function fetchToilets(): Toilet[] {
             price: 10,
             placement: "Vikeøyrane",
             address: "Vikeøyra renseanlegg",
-            openingHours: openAllWeek,
+            openingHours: openAllWeekUntilNight,
             accessible: false,
             babycare: false,
             pissoir: false,
@@ -31,7 +32,7 @@ export function fetchToilets(): Toilet[] {
             price: 10,
             placement: "Vekslet badestrand",
             address: "Voldavegen",
-            openingHours: openAllWeek,
+            openingHours: openAllWeekUntilNight,
             accessible: false,
             babycare: true,
             pissoir: false,
@@ -46,6 +47,7 @@ export function fetchToilets(): Toilet[] {
             accessible: false,
             babycare: false,
             pissoir: false,
+            season: 'summer' as Season,
         },
         {
             latitude: 62.24726625,
@@ -57,6 +59,7 @@ export function fetchToilets(): Toilet[] {
             accessible: false,
             babycare: false,
             pissoir: false,
+            season: 'summer' as Season,
         },
         {
             latitude: 62.14897042,
@@ -68,6 +71,7 @@ export function fetchToilets(): Toilet[] {
             accessible: false,
             babycare: false,
             pissoir: false,
+            season: 'summer' as Season,
         },
     ].map(toilet => ({ ...toilet, commune: "Ørsta" }))
 }

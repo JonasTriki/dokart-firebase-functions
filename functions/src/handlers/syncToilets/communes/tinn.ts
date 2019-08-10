@@ -11,8 +11,8 @@ export function fetchToilets(): Toilet[] {
             address: "Sam Eydes vei 68, 1412 Sofiemyr",
             openingHours: openAllWeek,
             accessible: false,
-            babycare: false,
-            pissoir: false,
+            babycare: true,
+            pissoir: true,
         },
     ].map(toilet => ({ ...toilet, commune: "Tinn" }))
 }

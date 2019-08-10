@@ -7,6 +7,12 @@ export const openAllWeek = {
     sunday: openAllDay,
 }
 export const closed: OpeningHour = { from: "closed", to: "closed" }
+export const openUntilNight: OpeningHour = { from: "06:00", to: "24:00" }
+export const openAllWeekUntilNight = {
+    weekday: openUntilNight,
+    saturday: openUntilNight,
+    sunday: openUntilNight,
+}
 
 export function parseOpeningHour(timeStr: string): OpeningHour {
     const time = timeStr.toLocaleLowerCase()
