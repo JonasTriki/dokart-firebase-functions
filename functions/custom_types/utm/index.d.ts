@@ -4,10 +4,10 @@ declare module 'utm' {
         longitude: number,
         forceZoneNum?: number,
     ): {
-        easting: number
-        northing: number
-        zoneNum: number
-        zoneLetter: string
+        easting: number;
+        northing: number;
+        zoneNum: number;
+        zoneLetter: string;
     };
 
     export function toLatLon(
@@ -15,10 +15,22 @@ declare module 'utm' {
         northing: number,
         zoneNum: number,
         zoneLetter: string,
-        northern?: boolean,
+        northern?: undefined,
         strict?: boolean,
     ): {
-        latitude: number
-        longitude: number
+        latitude: number;
+        longitude: number;
+    };
+
+    export function toLatLon(
+        easting: number,
+        northing: number,
+        zoneNum: number,
+        zoneLetter: undefined,
+        northern: boolean,
+        strict?: boolean,
+    ): {
+        latitude: number;
+        longitude: number;
     };
 }
