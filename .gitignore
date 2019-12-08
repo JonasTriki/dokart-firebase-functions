@@ -11,4 +11,7 @@
 **/node_modules/*
 **/.firebaserc
 
+# Mac OS
+.DS_store
+
 # End of https://www.gitignore.io/api/firebase

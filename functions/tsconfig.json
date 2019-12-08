@@ -12,9 +12,9 @@
       "esnext.asynciterable"
     ],
     "esModuleInterop": true,
-    "typeRoots": ["node_modules/@types", "custom_types"]
+    "typeRoots": ["node_modules/@types"]
   },
-  "exclude": ["node_modules", "custom_types"],
+  "exclude": ["node_modules"],
   "compileOnSave": true,
   "include": [
     "src"
