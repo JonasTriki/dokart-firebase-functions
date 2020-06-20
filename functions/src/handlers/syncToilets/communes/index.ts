@@ -5,6 +5,7 @@ import { fetchToilets as hjelmelandToilets } from './hjelmeland'
 import { fetchToilets as holToilets } from './hol'
 import { fetchToilets as inderoyToilets } from './inderoy'
 import { fetchToilets as jondalToilets } from './jondal'
+import { fetchToilets as nordAurdalToilets } from './nord-aurdal'
 import { fetchToilets as norddalToilets } from './norddal'
 import { fetchToilets as orstaToilets } from './orsta'
 import { fetchToilets as osloToilets } from './oslo'
@@ -17,6 +18,7 @@ import { fetchToilets as strynToilets } from './stryn'
 import { fetchToilets as tinnToilets } from './tinn'
 import { fetchToilets as trondheimToilets } from './trondheim'
 import { fetchToilets as valleToilets } from './valle'
+import { fetchToilets as aalToilets } from './aal'
 
 import Toilet from '../../../models/Toilet';
 
@@ -29,6 +31,7 @@ export async function fetchAllToilets(): Promise<Toilet[]> {
         ...await holToilets(),
         ...await inderoyToilets(),
         ...await jondalToilets(),
+        ...await nordAurdalToilets(),
         ...await norddalToilets(),
         ...await orstaToilets(),
         ...await osloToilets(),
@@ -41,5 +44,6 @@ export async function fetchAllToilets(): Promise<Toilet[]> {
         ...await tinnToilets(),
         ...await trondheimToilets(),
         ...await valleToilets(),
+        ...await aalToilets(),
     ]
 }

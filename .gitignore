@@ -5,12 +5,13 @@
 # Visual Studio Code - https://code.visualstudio.com/
 .settings/*
 .vscode/*
-tsconfig.json
-jsconfig.json
 
 ### Firebase ###
 .idea
 **/node_modules/*
 **/.firebaserc
+
+# Mac OS
+.DS_store
 
 # End of https://www.gitignore.io/api/firebase
