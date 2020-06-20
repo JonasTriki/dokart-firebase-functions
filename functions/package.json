@@ -10,11 +10,10 @@
     "logs": "firebase functions:log"
   },
   "engines": {
-    "node": "8"
+    "node": "10"
   },
   "main": "lib/index.js",
   "dependencies": {
-    "@google-cloud/firestore": "^2.6.1",
     "@types/node-fetch": "^2.5.4",
     "apollo-server": "^2.9.13",
     "apollo-server-express": "^2.9.13",

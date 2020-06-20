@@ -1,10 +1,9 @@
 import { IResolvers } from 'apollo-server-express'
 import admin from '../admin'
 import Toilet from '../models/Toilet'
-import { QuerySnapshot } from '@google-cloud/firestore';
 
 // const snapshotToData = (snapshot: QuerySnapshot) => snapshot.docs.map(doc => doc.data())
-const snapshotToDataWithId = (snapshot: QuerySnapshot) => snapshot.docs.map(doc => ({
+const snapshotToDataWithId = (snapshot: admin.firestore.QuerySnapshot) => snapshot.docs.map(doc => ({
     ...doc.data(),
     id: doc.id,
 }))
