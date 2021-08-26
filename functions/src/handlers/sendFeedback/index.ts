@@ -1,1 +1,1 @@
-export { default as sendFeedback } from './sendFeedback'
+export { default as sendFeedback } from "./sendFeedback";

@@ -1,10 +1,14 @@
-import * as functions from 'firebase-functions'
+/* eslint-disable max-len */
+import * as functions from "firebase-functions";
 
-const sendFeedback = (request: functions.https.Request, response: functions.Response) => {
-    response.send("sendFeedback called!");
-}
+const sendFeedback = (
+  request: functions.https.Request,
+  response: functions.Response
+): void => {
+  response.send("sendFeedback called!");
+};
 
-export default sendFeedback
+export default sendFeedback;
 
 /*
 

@@ -1,1 +1,1 @@
-export { default as syncToilets } from './syncToilets'
+export { default as syncToilets } from "./syncToilets";

@@ -1,3 +1,3 @@
-type Season = 'spring' | 'summer' | 'autumn' | 'vinter'
+type Season = "spring" | "summer" | "autumn" | "vinter";
 
-export default Season
+export default Season;

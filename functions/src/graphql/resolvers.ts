@@ -1,24 +1,25 @@
-import { IResolvers } from 'apollo-server-express'
-import admin from '../admin'
-import Toilet from '../models/Toilet'
+import { IResolvers } from "apollo-server-cloud-functions";
+import admin from "../admin";
+import Toilet from "../models/Toilet";
 
+// eslint-disable-next-line max-len
 // const snapshotToData = (snapshot: QuerySnapshot) => snapshot.docs.map(doc => doc.data())
-const snapshotToDataWithId = (snapshot: admin.firestore.QuerySnapshot) => snapshot.docs.map(doc => ({
+const snapshotToDataWithId = (snapshot: admin.firestore.QuerySnapshot) =>
+  snapshot.docs.map((doc) => ({
     ...doc.data(),
     id: doc.id,
-}))
+  }));
 
-const toiletsCol = admin.firestore().collection("toilets")
+const toiletsCol = admin.firestore().collection("toilets");
 
 const resolvers: IResolvers = {
-    Query: {
-        async toilets() {
-            const toilets = await toiletsCol
-                .get()
-            return snapshotToDataWithId(toilets) as Toilet[]
-        },
+  Query: {
+    async toilets(): Promise<Toilet[]> {
+      const toilets = await toiletsCol.get();
+      return snapshotToDataWithId(toilets) as Toilet[];
     },
-    /*City: {
+  },
+  /* City: {
         async toilets(city: City) {
             const toilets = await citiesCol
                 .doc(city.id)
@@ -40,6 +41,6 @@ const resolvers: IResolvers = {
             } as City
         }
     }*/
-}
+};
 
-export default resolvers
+export default resolvers;

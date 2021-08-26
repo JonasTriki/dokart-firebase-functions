@@ -1,5 +1,5 @@
-import gqlServer from '../../graphql/server';
+import gqlServer from "../../graphql/server";
 
-const server = gqlServer();
+const server = gqlServer;
 
-export default server
+export default server;

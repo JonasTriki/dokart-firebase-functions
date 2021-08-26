@@ -1,38 +1,37 @@
-import { fetchAllToilets } from './communes';
-import admin from '../../admin'
+import { fetchAllToilets } from "./communes";
+import admin from "../../admin";
 
-const firestore = admin.firestore()
-const toiletsCol = firestore.collection("toilets")
+const firestore = admin.firestore();
+firestore.settings({ ignoreUndefinedProperties: true });
+const toiletsCol = firestore.collection("toilets");
 
-async function syncToilets() {
-    console.log("Synchronizing toilets…")
+async function syncToilets(): Promise<void> {
+  console.log("Synchronizing toilets…");
+  const fetchedToilets = await fetchAllToilets();
+  const firestoreToiletsSnapshot = await toiletsCol.get();
+  const firestoreToilets = firestoreToiletsSnapshot.docs;
+  console.log("Toilets: " + firestoreToilets.length.toString());
 
-    const fetchedToilets = await fetchAllToilets()
-    const firestoreToiletsSnapshot = await toiletsCol.get()
-    const firestoreToilets = firestoreToiletsSnapshot.docs
+  // Set toilets in a batch
+  const batch = firestore.batch();
+  for (const toilet of fetchedToilets) {
+    const firestoreToilet = firestoreToilets.find((snapshot) => {
+      const { latitude, longitude } = snapshot.data();
+      return toilet.latitude === latitude && toilet.longitude === longitude;
+    });
 
-    const work = fetchedToilets.map(async (toilet) => {
-        const firestoreToilet = firestoreToilets
-            .find(snapshot => {
-                const { latitude, longitude } = snapshot.data()
-                return toilet.latitude === latitude && toilet.longitude === longitude
-            })
+    // Add to batch
+    const firestoreToiletRef = firestoreToilet ?
+      firestoreToilet.ref :
+      toiletsCol.doc();
+    batch.set(firestoreToiletRef, toilet);
+  }
 
-        if (firestoreToilet) {
+  // Commit the batch
+  console.log("Committing toilet batch...");
+  await batch.commit();
 
-            // Firestore toilet already exists, update it
-            return firestoreToilet.ref.update(toilet)
-        } else {
-
-            // Firestore toilet does not exist, create it
-            return toiletsCol.add(toilet)
-        }
-    })
-
-    // Do the work!
-    await Promise.all(work)
-
-    console.log("Toilets synchronized!")
+  console.log("Toilets synchronized!");
 }
 
-export default syncToilets
+export default syncToilets;

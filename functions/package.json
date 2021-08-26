@@ -1,36 +1,39 @@
 {
   "name": "functions",
+  "license": "MIT",
   "scripts": {
-    "lint": "tslint --project tsconfig.json",
-    "build": "./node_modules/.bin/tsc",
-    "serve": "npm run build && firebase serve --only functions",
+    "lint": "eslint --ext .js,.ts .",
+    "build": "tsc",
+    "serve": "npm run build && firebase emulators:start --only functions",
     "shell": "npm run build && firebase functions:shell",
     "start": "npm run shell",
     "deploy": "firebase deploy --only functions",
     "logs": "firebase functions:log"
   },
   "engines": {
-    "node": "10"
+    "node": "14"
   },
   "main": "lib/index.js",
   "dependencies": {
-    "@types/node-fetch": "^2.5.4",
-    "apollo-server": "^2.9.13",
-    "apollo-server-cloud-functions": "^2.15.0",
+    "@types/graphql": "^14.5.0",
+    "@types/utm": "^1.1.1",
+    "apollo-server": "^2.25.2",
+    "apollo-server-cloud-functions": "^2.25.2",
     "axios": "^0.21.1",
     "express": "^4.17.1",
-    "firebase-admin": "^8.8.0",
-    "firebase-functions": "^3.3.0",
-    "graphql": "^14.5.8",
+    "firebase-admin": "^9.11.1",
+    "firebase-functions": "^3.15.4",
+    "graphsql": "^0.0.0",
     "utm": "^1.1.1"
   },
   "devDependencies": {
-    "@types/cors": "^2.8.6",
-    "@types/express": "^4.17.2",
-    "@types/graphql": "^14.5.0",
-    "@types/utm": "^1.1.1",
-    "tslint": "^5.20.1",
-    "typescript": "^3.7.3"
+    "@typescript-eslint/eslint-plugin": "^3.9.1",
+    "@typescript-eslint/parser": "^3.8.0",
+    "eslint": "^7.6.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-plugin-import": "^2.22.0",
+    "firebase-functions-test": "^0.2.0",
+    "typescript": "^3.8.0"
   },
   "private": true
 }
