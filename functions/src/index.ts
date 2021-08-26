@@ -30,7 +30,7 @@ export const syncToiletsScheduled = functions
   .region("europe-west2")
   .pubsub.schedule("0 3 * * 0") // Every Sunday at 3 am
   .timeZone("Europe/Oslo")
-  .onRun(async (context) => {
+  .onRun(async () => {
     await syncToiletsHandler();
   });
 

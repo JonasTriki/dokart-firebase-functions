@@ -1,10 +1,10 @@
 module.exports = {
-  root: true,
-  env: {
+  "root": true,
+  "env": {
     es6: true,
     node: true,
   },
-  extends: [
+  "extends": [
     "eslint:recommended",
     "plugin:import/errors",
     "plugin:import/warnings",
@@ -12,23 +12,33 @@ module.exports = {
     "google",
     "plugin:@typescript-eslint/recommended",
   ],
-  parser: "@typescript-eslint/parser",
-  parserOptions: {
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
     project: ["tsconfig.json", "tsconfig.dev.json"],
     sourceType: "module",
   },
-  ignorePatterns: [
+  "ignorePatterns": [
     "/lib/**/*", // Ignore built files.
   ],
-  plugins: [
+  "plugins": [
     "@typescript-eslint",
     "import",
   ],
-  rules: {
+  "rules": {
     "quotes": ["error", "double"],
     "indent": ["error", 2],
     "object-curly-spacing": [2, "always"],
-    "semi": ["error", "always"],
+    "semi": "off",
     "require-jsdoc": "off",
+    "camelcase": ["error"],
+    "@typescript-eslint/semi": ["error"],
   },
+  "overrides": [
+    {
+      "files": ["**/*.ts", "**/*.tsx"],
+      "rules": {
+        "camelcase": ["off"],
+      },
+    },
+  ],
 };

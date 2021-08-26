@@ -18,4 +18,4 @@ export default interface Toilet {
   pissoir: boolean;
   commune: string;
   season?: Season;
-};
+}
