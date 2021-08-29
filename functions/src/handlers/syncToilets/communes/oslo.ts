@@ -4,16 +4,16 @@ import { openAllDay } from "../../../utils/time";
 
 interface OsloToilet {
   attributes: {
-    OBJECTID: number;
-    Objekttype: string;
-    Kommentar: string;
-    Navn: string;
-    Adresse: string;
-    URL: string;
-    Forvalter: string;
-    Tilgjengelighetsvurdering: number;
-    Bydel: string;
-    Toalettype: number;
+    objectid: number;
+    objekttype: string;
+    kommentar: string;
+    navn: string;
+    adresse: string;
+    url: string;
+    orvalter: string;
+    tilgjengelighetsvurdering: number;
+    bydel: string;
+    toalettype: number;
   };
   geometry: {
     x: number;
@@ -43,17 +43,17 @@ export async function fetchToilets(): Promise<Toilet[]> {
     latitude: toilet.geometry.y,
     longitude: toilet.geometry.x,
     price: -1,
-    placement: toilet.attributes.Navn,
+    placement: toilet.attributes.navn,
     address:
-      toilet.attributes.Bydel ||
-      toilet.attributes.Adresse ||
-      toilet.attributes.Navn,
+      toilet.attributes.bydel ||
+      toilet.attributes.adresse ||
+      toilet.attributes.navn,
     openingHours: {
       weekday: openAllDay,
       saturday: openAllDay,
       sunday: openAllDay,
     },
-    accessible: toilet.attributes.Toalettype === 1,
+    accessible: toilet.attributes.toalettype === 1,
     babycare: false,
     pissoir: false,
     commune: "Oslo",
