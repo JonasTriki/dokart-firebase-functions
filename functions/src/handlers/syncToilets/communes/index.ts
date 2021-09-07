@@ -23,7 +23,7 @@ import { fetchToilets as aalToilets } from "./aal";
 import Toilet from "../../../models/Toilet";
 
 export async function fetchAllToilets(): Promise<Toilet[]> {
-  return [
+  const toilets = [
     ...(await bergenToilets()),
     ...(await enebakkToilets()),
     ...(await hareidToilets()),
@@ -46,4 +46,14 @@ export async function fetchAllToilets(): Promise<Toilet[]> {
     ...(await valleToilets()),
     ...(await aalToilets()),
   ];
+
+  const toiletsWithNullFields = toilets.filter((toilet) =>
+    Object.values(toilet).find((val) => val === null)
+  );
+  if (toiletsWithNullFields.length > 0) {
+    console.error("Toilets with null-fields", { toiletsWithNullFields });
+    throw new Error("Fetched toilets has null-fields; see console.");
+  }
+
+  return toilets;
 }
