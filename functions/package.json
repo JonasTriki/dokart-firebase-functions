@@ -17,7 +17,7 @@
   "dependencies": {
     "@types/graphql": "^14.5.0",
     "@types/utm": "^1.1.1",
-    "apollo-server": "^2.25.2",
+    "apollo-server": "^2.25.4",
     "apollo-server-cloud-functions": "^2.25.2",
     "axios": "^0.21.1",
     "express": "^4.17.1",
