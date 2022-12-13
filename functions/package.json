@@ -20,7 +20,7 @@
     "apollo-server": "^2.25.2",
     "apollo-server-cloud-functions": "^2.25.2",
     "axios": "^0.21.1",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "firebase-admin": "^9.11.1",
     "firebase-functions": "^3.15.4",
     "graphsql": "^0.0.0",
